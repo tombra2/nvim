@@ -1,7 +1,7 @@
 
--- Aktiviert Nerd Font Unterstützung
+-- Aktiviert Nerd Font Unterstützung und Terminal Colors
 vim.g.have_nerd_font = true
-
+vim.opt.termguicolors = true
 -- Anzeigeeinstellungen
 vim.opt.number = true            -- Zeilennummern anzeigen
 vim.opt.relativenumber = true    -- Relative Zeilennummern aktivieren
