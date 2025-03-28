@@ -1,8 +1,8 @@
 vim.keymap.set("n", "<C-b>", vim.cmd.Ex, { desc = "Back" })
 vim.keymap.set("i", "<C-s>", "<cmd>w<CR>", { desc = "Save" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save" })
-vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", { desc = "Quit NVIM" })
-vim.keymap.set("i", "<C-q>", "<cmd>q<CR>", { desc = "Quit NVIM" })
+vim.keymap.set("n", "<C-q>", "<cmd>wq!<CR>", { desc = "Quit NVIM" })
+vim.keymap.set("i", "<C-q>", "<cmd>wq!<CR>", { desc = "Quit NVIM" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -15,6 +15,6 @@ end, { desc = "Open Diagnostics in Float" })
 vim.keymap.set("n", "<leader>cf", function()
 	require("conform").format({
 		lsp_format = "fallback",
-	}
-)
+	})
 end, { desc = "[C]ode [F]ormat" })
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

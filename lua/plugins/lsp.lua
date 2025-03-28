@@ -16,7 +16,7 @@ return {
 		-- Brief aside: **What is LSP?**
 		--
 		-- LSP is an initialism you've probably heard, but might not understand what it is.
-		--
+
 		-- LSP stands for Language Server Protocol. It's a protocol that helps editors
 		-- and language tooling communicate in a standardized fashion.
 		--
@@ -189,7 +189,8 @@ return {
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
 		--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
 		--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local original_cabailities = vim.lsp.protocol.make_client_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities(original_cabailities)
 		--   capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 		-- Enable the following language servers
@@ -202,11 +203,11 @@ return {
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			clangd = {},
-			phpactor = {},
 			-- gopls = {},
+			emmet_language_server = {},
+			html = {},
+			phpactor = {},
 			jdtls = {},
-			--rust_analyzer = {},j
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
 			-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -247,7 +248,10 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format Lua code
+			"stylua",
+			"prettier",
+			"css-lsp",
+			"php-cs-fixer",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
