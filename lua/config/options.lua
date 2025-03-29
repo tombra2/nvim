@@ -12,7 +12,7 @@ vim.opt.showmode = false -- Modus nicht in der Statuszeile anzeigen (da bereits 
 -- Suchverhalten
 vim.opt.ignorecase = true -- Suche ist standardmäßig nicht zwischen Groß- und Kleinschreibung unterscheidend
 vim.opt.smartcase = true -- Falls ein Großbuchstabe in der Suche, wird die Suche groß-/kleinschreibungssensitiv
-vim.opt.hlsearch = true -- Suchbegriffe nicht dauerhaft hervorheben
+vim.opt.hlsearch = false -- Suchbegriffe nicht dauerhaft hervorheben
 vim.opt.incsearch = true -- Inkrementelle Suche aktivieren
 
 -- Einrückungen und Tabulatoren
